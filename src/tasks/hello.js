@@ -1,5 +1,5 @@
-const { taskFromPromise } = require('../helpers/webtask-helpers');
-const { getValue, setValue } = require('../lib/storage');
+const { taskFromPromise } = require('../helpers/webtask-helpers')
+const { getValue, setValue } = require('../lib/storage')
 
 module.exports = taskFromPromise((ctx) => {
   return getValue(ctx, 'counter')

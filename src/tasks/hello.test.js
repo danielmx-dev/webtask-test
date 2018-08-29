@@ -1,4 +1,4 @@
-const hello = require('./hello');
+const hello = require('./hello')
 
 test('resolves to the current counter', done => {
   const ctx = {

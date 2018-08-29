@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "npm test -- --watch",
+    "lint": "eslint .",
+    "fix": "npm lint --fix"
   },
   "repository": {
     "type": "git",
@@ -19,6 +21,7 @@
   },
   "homepage": "https://github.com/dylanrevisited/webtask-test#readme",
   "devDependencies": {
+    "eslint": "^5.4.0",
     "jest": "^23.5.0"
   }
 }
