@@ -1,16 +1,11 @@
+const { taskFromPromise } = require('../helpers/webtask-helpers');
+const { getValue, setValue } = require('../lib/storage');
 
-module.exports = (ctx, cb) => {
-  ctx.storage.get(function (err, data) {
-    if (err) return cb(err);
-    if (!data) data = { };
-    if (!data.counter) data.counter = 0;
-
-    data.counter++;
-
-    ctx.storage.set(data, function (err) {
-        if (err) return cb(err);
-
-        cb(null, data);
-    });
-  });
-}
+module.exports = taskFromPromise((ctx) => {
+  return getValue(ctx, 'counter')
+    .then(currentCounter => {
+      const counter = currentCounter ? currentCounter + 1 : 1
+      return setValue(ctx, 'counter', counter)
+        .then(() => ({ counter }))
+    })
+})
